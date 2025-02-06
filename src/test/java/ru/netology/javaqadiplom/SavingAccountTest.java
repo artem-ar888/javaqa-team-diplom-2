@@ -11,7 +11,7 @@ public class SavingAccountTest {
                 2_000,
                 1_000,
                 10_000,
-                5
+                6
         );
 
         account.add(3_000);
