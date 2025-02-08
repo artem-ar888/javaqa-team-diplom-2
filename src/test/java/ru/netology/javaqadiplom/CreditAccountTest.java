@@ -121,7 +121,7 @@ public class CreditAccountTest {
         boolean purchaseSuccess = simpleAccount.pay(amount);
 
         int actual = simpleAccount.getBalance();
-        int expected = -5_000;
+        int expected = 100 - 5_100;
 
         Assertions.assertTrue(purchaseSuccess);
         Assertions.assertEquals(expected, actual);
@@ -133,7 +133,7 @@ public class CreditAccountTest {
         boolean purchaseSuccess = simpleAccount.pay(amount);
 
         int actual = simpleAccount.getBalance();
-        int expected = -4_999;
+        int expected = 100 - 5_099;
 
         Assertions.assertTrue(purchaseSuccess);
         Assertions.assertEquals(expected, actual);
@@ -178,7 +178,7 @@ public class CreditAccountTest {
         simpleAccount.add(amount);
 
         int actual = simpleAccount.getBalance();
-        int expected = 200;
+        int expected = 100 + 100;
 
         Assertions.assertEquals(expected, actual);
     }
@@ -188,7 +188,7 @@ public class CreditAccountTest {
         simpleAccount.pay(300);
 
         int actual = simpleAccount.yearChange();
-        int expected = -30;
+        int expected = -30; // (-200 * 15) / 100
 
         Assertions.assertEquals(expected, actual);
     }
@@ -198,7 +198,7 @@ public class CreditAccountTest {
         simpleAccount.pay(100);
 
         int actual = simpleAccount.yearChange();
-        int expected = 0;
+        int expected = 0; // balance = 0
 
         Assertions.assertEquals(expected, actual);
     }
@@ -206,7 +206,7 @@ public class CreditAccountTest {
     @Test
     public void shouldNotCountYearChangeBecauseBalanceIsPositive() {
         int actual = simpleAccount.yearChange();
-        int expected = 0;
+        int expected = 0; // balance = 100 > 0
 
         Assertions.assertEquals(expected, actual);
     }
@@ -216,7 +216,7 @@ public class CreditAccountTest {
         simpleAccount.pay(299);
 
         int actual = simpleAccount.yearChange();
-        int expected = -29;
+        int expected = -29; // (-199 * 15) / 100
 
         Assertions.assertEquals(expected, actual);
     }
