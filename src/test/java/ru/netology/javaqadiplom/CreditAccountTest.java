@@ -145,7 +145,7 @@ public class CreditAccountTest {
         boolean purchaseSuccess = simpleAccount.pay(amount);
 
         int actual = simpleAccount.getBalance();
-        int expected = 0;
+        int expected = 100;
 
         Assertions.assertFalse(purchaseSuccess);
         Assertions.assertEquals(expected, actual);
