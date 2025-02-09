@@ -99,12 +99,23 @@ public class SavingAccountTest {
     public void shouldCalculateYearChange(){
         SavingAccount account2 = new SavingAccount(399,
                 0, 10_000, 10);
-        Assertions.assertEquals(30, account2.yearChange());
+        Assertions.assertEquals(39, account2.yearChange());
     }
     @Test
     public void shouldCalculateYearChangeWithZeroBalance(){
         SavingAccount account3 = new SavingAccount(0,
                 0, 10_000, 10);
         Assertions.assertEquals(0, account3.yearChange());
+    }
+    @Test
+    public void shouldSavingAccWhenBalanceMinBalanceMaxBalanceEquals(){
+        Assertions.assertDoesNotThrow(() -> new SavingAccount(100,
+                100, 100 , 5));
+    }
+    @Test
+    public void shouldCalculateYearChangeAndTruncate(){
+        SavingAccount account4 = new SavingAccount(199,
+                0, 1_000, 15);
+        Assertions.assertEquals(29, account4.yearChange());
     }
 }
