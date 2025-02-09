@@ -75,10 +75,36 @@ public class SavingAccountTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(20_000,
                 1_000, 10_000, 5));
     }
-
-
-
-
-
-
+    @Test
+    public void shouldSavingAccWithZeroBalance(){
+        Assertions.assertDoesNotThrow(() -> new SavingAccount(0,
+                0, 10_000, 15));
+    }
+    @Test
+    public void shouldNotSavingAccWithNegativeMinBalance(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(1_000,
+                -1_000, 10_000, 5)); //bag-report
+    }
+    @Test
+    public void shouldNotSavingAccWithNegativeMaxBalance(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(1_000,
+                1_000, -10_000, 5)); //bag-report
+    }
+    @Test
+    public void shouldNotPayMoreThanBalance(){
+        account.pay(5_000);
+        Assertions.assertEquals(2_000, account.getBalance());  // bag-report
+    }
+    @Test
+    public void shouldCalculateYearChange(){
+        SavingAccount account2 = new SavingAccount(399,
+                0, 10_000, 10);
+        Assertions.assertEquals(30, account2.yearChange());
+    }
+    @Test
+    public void shouldCalculateYearChangeWithZeroBalance(){
+        SavingAccount account3 = new SavingAccount(0,
+                0, 10_000, 10);
+        Assertions.assertEquals(0, account3.yearChange());
+    }
 }
