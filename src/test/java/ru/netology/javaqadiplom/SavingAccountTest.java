@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class SavingAccountTest {
+
     SavingAccount account = new SavingAccount(
             2_000,
             1_000,
