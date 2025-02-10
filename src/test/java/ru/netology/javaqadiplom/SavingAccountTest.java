@@ -118,4 +118,22 @@ public class SavingAccountTest {
                 0, 1_000, 15);
         Assertions.assertEquals(29, account4.yearChange());
     }
+    @Test
+    public void shouldNotSetNegativeRate(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> account.setRate(-5));
+    }
+    @Test
+    public void shouldSetRate(){
+        Assertions.assertDoesNotThrow(() -> account.setRate(20));
+    }
+    @Test
+    public void shouldNotSavingAccWithNegativeInitialBalance(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(-1_000,
+                1_000, 10_000, 10));
+    }
+    @Test
+    public void shouldNotSavingAccWithZeroMaxBalance(){
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new SavingAccount(0,
+                0, 0, 10));
+    }
 }
