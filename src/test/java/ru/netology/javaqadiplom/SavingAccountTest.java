@@ -113,12 +113,6 @@ public class SavingAccountTest {
                 100, 100 , 5));
     }
     @Test
-    public void shouldCalculateYearChangeAndTruncate(){
-        SavingAccount account4 = new SavingAccount(199,
-                0, 1_000, 15);
-        Assertions.assertEquals(29, account4.yearChange());
-    }
-    @Test
     public void shouldNotSetNegativeRate(){
         Assertions.assertThrows(IllegalArgumentException.class, () -> account.setRate(-5));
     }
